@@ -1,7 +1,7 @@
-# require_relative 'what'
 
 class Router
-  def initialize
+
+  def initialize(meals_controller)
     @choice = 100
   end
 
@@ -19,7 +19,7 @@ class Router
   def direct(choice)
     case choice
       when 1
-        puts "Choose 1"
+        meals_controller.list
       when 2
         puts "Choose 2"
       else
