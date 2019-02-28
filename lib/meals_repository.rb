@@ -2,7 +2,8 @@ require 'csv'
 require_relative 'meal'
 
 class Meals_Repository
-    def initialize (csvfile)
+
+  def initialize (csvfile)
     @csvfile = csvfile
     @meals = []
     load_csv
