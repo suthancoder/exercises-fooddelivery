@@ -1,11 +1,11 @@
-require 'what'
+# require 'what'
+require 'CSV'
+require_relative 'lib/router.rb'
 
-require_relative 'what'
 
 
-
-Meal_DB_File = CSV.open(File.open(__DIR__, 'data/meals.csv'))
-Customer_DB_File = CSV.open(File.open(__DIR__, 'data/customers.csv'))
+Meal_DB_File = File.join(File.dirname( __FILE__), 'data/meals.csv')
+Customer_DB_File = File.join(File.dirname( __FILE__), 'data/customers.csv')
 
 
 
