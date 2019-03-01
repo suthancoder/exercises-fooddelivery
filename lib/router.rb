@@ -3,6 +3,7 @@ class Router
 
   def initialize(meals_controller)
     @choice = 100
+    @meals_controller = meals_controller
   end
 
   def run
@@ -19,7 +20,7 @@ class Router
   def direct(choice)
     case choice
       when 1
-        meals_controller.list
+        @meals_controller.list
       when 2
         puts "Choose 2"
       else
