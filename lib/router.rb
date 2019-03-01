@@ -22,7 +22,7 @@ class Router
       when 1
         @meals_controller.list
       when 2
-        puts "Choose 2"
+        @meals_controller.add
       else
         puts "no choices"
     end

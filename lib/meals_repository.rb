@@ -13,7 +13,9 @@ class Meals_Repository
     return @meals
   end
 
-  def add_meal
+  def add_meal(meal)
+    @meals << meal
+    save_csv
   end
 
   def delete_meal
@@ -22,7 +24,6 @@ class Meals_Repository
   def update_meal
   end
 
-  private
 
   def load_csv
     CSV.foreach(@csvfile, headers: :first_row, header_converters: :symbol) do |row|
@@ -31,6 +32,12 @@ class Meals_Repository
   end
 
   def save_csv
+    CSV.open(@csvfile, 'w') do |csv|
+      csv << @meals.first.class.headers
+        @meals.each do |meal|
+          csv << meal.to_csv_row
+        end
+    end
   end
 
 end

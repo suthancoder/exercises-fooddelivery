@@ -1,3 +1,4 @@
-name, price,
-burger, 1.00,
-kebab, 2.00,
+"@name,",@price
+curry,4.00
+kebab,3.00
+salad,2.00

@@ -7,4 +7,16 @@ class View
 
   end
 
+  def add_meal
+    meal = []
+    puts "Please provide meal name:"
+    name = gets.chomp
+    meal << name
+    puts "Please provide meal price:"
+    price = gets.chomp
+    meal << price
+    return meal
+  end
+
+
 end
