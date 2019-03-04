@@ -10,7 +10,8 @@ class Meals_Repository
   end
 
   def list_meals
-    p Meal.headers[0].sub(/[@]/, '').replace(',')
+    p Meal.headers[0].sub(/[@]/, '').lstrip
+
     return @meals
   end
 
