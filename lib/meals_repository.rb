@@ -6,12 +6,11 @@ class Meals_Repository
   def initialize (csvfile)
     @csvfile = csvfile
     @meals = []
+    @headers = []
     load_csv
   end
 
   def list_meals
-    p Meal.headers[0].sub(/[@]/, '').lstrip
-
     return @meals
   end
 
@@ -32,6 +31,16 @@ class Meals_Repository
      @meals << Meal.new(row)
     end
   end
+
+  def headers
+    header_array = []
+    @headers = CSV.read(@csvfile, headers: true).headers
+    @headers.each do |header|
+      header_array << header.sub(/[@]/, '').sub(/[,]/, '')
+    end
+    return header_array
+  end
+
 
   def save_csv
     CSV.open(@csvfile, 'w') do |csv|

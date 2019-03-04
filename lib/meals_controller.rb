@@ -9,18 +9,27 @@ class Meals_Controller
   end
 
   def list
-    meals =  @meals_repository.list_meals
-    @view.display(meals)
+    meals = @meals_repository.list_meals
+    headers = @meals_repository.headers
+    @view.display(headers, meals)
   end
 
   def add
-    meal = @view.add_meal
-    new_meal = Meal.new(name: meal[0], price: meal[1])
+    array = []
+    headers = @meals_repository.headers
+    meal = @view.add(headers)
+    if meal.length == headers.length
+      meal.length.times do |i|
+        array <<[headers[i-1].to_sym, meal[i-1]]
+      end
+    else
+      puts "Error building item"
+    end
+    new_meal = Meal.new(array.to_h)
     @meals_repository.add_meal(new_meal)
   end
 
 
+
   private
-
-
 end

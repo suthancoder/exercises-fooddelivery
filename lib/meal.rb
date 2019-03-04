@@ -13,6 +13,4 @@ class Meal
   def self.headers
     %w(@name, @price)
   end
-
-
 end
