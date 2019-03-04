@@ -1,17 +1,16 @@
 require 'csv'
+require_relative 'customer.rb'
 
 class Customers_Repository
 
   def initialize(csvfile)
     @csvfile = csvfile
     @customers = []
-    p @csvfile
-
+    load_csv
   end
 
   def list
-    puts "list customers - Customer_Repository"
-
+    @customers
   end
 
   def add
@@ -21,8 +20,11 @@ class Customers_Repository
   def save_csv
   end
 
-  # def load_csv
-  #   array = CSV.read("customers.csv")
-  #     p array
-  # end
+  def load_csv
+    CSV.foreach(@csvfile, headers: :first_row, header_converters: :symbol) do |row|
+      customer = Customer.new(row)
+      @customers << customer
+    end
+  end
+
 end
