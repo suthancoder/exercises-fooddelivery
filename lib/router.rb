@@ -49,7 +49,7 @@ class Router
           when 1
             @customers_controller.list
           when 2
-            puts "add customer - router"
+            @customers_controller.add
           else
             puts "no choices"
         end

@@ -1,12 +1,5 @@
 
-class View
-  def display(headers, array)
-    array.each_with_index do |row, index|
-      puts "#{index} #{row.name}"
-    end
-
-  end
-
+class BaseView
   def add(headers)
     item = []
     headers.each do |header|
@@ -16,5 +9,4 @@ class View
     end
     return item
   end
-
 end

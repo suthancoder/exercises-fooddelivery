@@ -1,30 +1,9 @@
-require 'csv'
+require_relative 'base_repository'
 require_relative 'customer.rb'
 
-class Customers_Repository
+class CustomersRepository < BaseRepository
 
-  def initialize(csvfile)
-    @csvfile = csvfile
-    @customers = []
-    load_csv
+  def build_element(item)
+    Customer.new(item)
   end
-
-  def list
-    @customers
-  end
-
-  def add
-  end
-
-
-  def save_csv
-  end
-
-  def load_csv
-    CSV.foreach(@csvfile, headers: :first_row, header_converters: :symbol) do |row|
-      customer = Customer.new(row)
-      @customers << customer
-    end
-  end
-
 end
