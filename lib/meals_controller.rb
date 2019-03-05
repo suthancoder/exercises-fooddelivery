@@ -16,6 +16,7 @@ class MealsController < BaseController
     headers = @meals_repository.headers
     item = @view.add(headers)
     array = build_item(headers, item)
+    p array.to_h
     new_meal = Meal.new(array.to_h)
     @meals_repository.add(new_meal)
   end

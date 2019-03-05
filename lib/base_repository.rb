@@ -14,8 +14,10 @@ class BaseRepository
   end
 
   def add(element)
+    element.id = @next_id.to_s
     @elements << element
     save_csv
+    @next_id += 1
   end
 
   def destroy
@@ -25,6 +27,7 @@ class BaseRepository
   def load_csv
     CSV.foreach(@csvfile, headers: :first_row, header_converters: :symbol) do |row|
      @elements << build_element(row)
+     @next_id += 1
     end
   end
 

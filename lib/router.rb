@@ -1,10 +1,11 @@
 
 class Router
 
-  def initialize(meals_controller, customers_controller)
+  def initialize(meals_controller, customers_controller, employees_controller)
     @choice = [10,0]
     @meals_controller = meals_controller
     @customers_controller = customers_controller
+    @employees_controller = employees_controller
   end
 
   def run
@@ -12,12 +13,15 @@ class Router
       puts "0. Exit"
       puts "1. Customer database"
       puts "2. Meal database"
+      puts "3. Employee database"
       puts "Type number to choose relevant option"
       @choice[0] = gets.chomp.to_i
       if @choice[0] == 1
         customer_menu
       elsif @choice[0] == 2
         meal_menu
+      elsif @choice[0] == 3
+        employee_menu
       end
       direct(@choice)
     end
@@ -39,7 +43,13 @@ class Router
       @choice[1] = gets.chomp.to_i
   end
 
-
+  def employee_menu
+      puts "0. Exit"
+      puts "1. List all employees"
+      puts "2. Add a new employees"
+      puts "Type number to choose relevant option"
+      @choice[1] = gets.chomp.to_i
+  end
 
 
   def direct(choice)
@@ -59,6 +69,15 @@ class Router
             @meals_controller.list
           when 2
             @meals_controller.add
+          else
+            puts "no choices"
+        end
+      when 3
+        case @choice[1]
+          when 1
+            @employees_controller.list
+          when 2
+            @employees_controller.add
           else
             puts "no choices"
         end
