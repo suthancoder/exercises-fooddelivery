@@ -1,54 +1,10 @@
-require 'csv'
+require_relative 'base_repository'
 require_relative 'meal'
 
-class Meals_Repository
+class MealsRepository < BaseRepository
 
-  def initialize (csvfile)
-    @csvfile = csvfile
-    @meals = []
-    @headers = []
-    load_csv
-  end
-
-  def list_meals
-    return @meals
-  end
-
-  def add_meal(meal)
-    @meals << meal
-    save_csv
-  end
-
-  def delete_meal
-  end
-
-  def update_meal
-  end
-
-
-  def load_csv
-    CSV.foreach(@csvfile, headers: :first_row, header_converters: :symbol) do |row|
-     @meals << Meal.new(row)
-    end
-  end
-
-  def headers
-    header_array = []
-    @headers = CSV.read(@csvfile, headers: true).headers
-    @headers.each do |header|
-      header_array << header.sub(/[@]/, '').sub(/[,]/, '')
-    end
-    return header_array
-  end
-
-
-  def save_csv
-    CSV.open(@csvfile, 'w') do |csv|
-      csv << @meals.first.class.headers
-        @meals.each do |meal|
-          csv << meal.to_csv_row
-        end
-    end
+  def build_element(item)
+    Meal.new(item)
   end
 
 end

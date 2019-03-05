@@ -8,11 +8,11 @@ require_relative 'lib/customers_repository'
 meal_file = File.join(File.dirname( __FILE__), 'data/meals.csv')
 customers_file = File.join(File.dirname( __FILE__), 'data/customers.csv')
 
-meals_repository = Meals_Repository.new(meal_file)
-meals_controller = Meals_Controller.new(meals_repository)
+meals_repository = MealsRepository.new(meal_file)
+meals_controller = MealsController.new(meals_repository)
 
-customers_repository = Customers_Repository.new(customers_file)
-customers_controller = Customers_Controller.new(customers_repository)
+customers_repository = CustomersRepository.new(customers_file)
+customers_controller = CustomersController.new(customers_repository)
 
 router = Router.new(meals_controller, customers_controller)
 
