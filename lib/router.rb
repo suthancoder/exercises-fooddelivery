@@ -6,9 +6,34 @@ class Router
     @meals_controller = meals_controller
     @customers_controller = customers_controller
     @employees_controller = employees_controller
+    @session = false
   end
 
   def run
+    password
+    puts @session
+  end
+
+
+  def password
+    puts "What is your username?"
+    username = gets.chomp
+    if @employees_controller.checkname(username)
+      puts "What is your password"
+      password = gets.chomp
+        if @employees_controller.checkpassword(username, password)
+          @session = true
+          puts "Username and password verified and is a manager"
+        else
+          puts "Username and password do not match"
+        end
+    else
+      puts "Username does not exist"
+    end
+  end
+
+
+  def home_menu
     while @choice[0] != 0
       puts "0. Exit"
       puts "1. Customer database"
@@ -26,6 +51,7 @@ class Router
       direct(@choice)
     end
   end
+
 
   def meal_menu
       puts "0. Exit"
