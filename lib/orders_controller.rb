@@ -11,6 +11,7 @@ class OrdersController < BaseController
 
   def list
     @orders = @orders_repository.list
+    p @orders
     real_orders
     @view.orders_display(@orders)
   end
@@ -26,7 +27,8 @@ class OrdersController < BaseController
   end
 
   def get_customer(id)
-    customers = @customers_repository.list
+    customer = @customers_repository.find(id)
+    p customer.class
   end
 
   def get_meal
