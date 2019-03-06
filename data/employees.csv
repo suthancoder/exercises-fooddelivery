@@ -1,4 +1,4 @@
 id,name,role,password
 1,paul,manager,secret
-2,john,delivery_guy,secret
+2,john,delivery,secret
 3,bill,manager,secret

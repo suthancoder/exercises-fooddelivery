@@ -6,7 +6,7 @@ class Router
     @meals_controller = meals_controller
     @customers_controller = customers_controller
     @employees_controller = employees_controller
-    @session = false
+    @session = 0
   end
 
   def run
@@ -21,9 +21,13 @@ class Router
     if @employees_controller.checkname(username)
       puts "What is your password"
       password = gets.chomp
-        if @employees_controller.checkpassword(username, password)
-          @session = true
+        if @employees_controller.checkpassword(username, password) == 1
+          @session = 1
           puts "Username and password verified and is a manager"
+          @session = 1
+        elsif @employees_controller.checkpassword(username, password) == 2
+          puts "Username and password verified and is a delivery person"
+          @session = 2
         else
           puts "Username and password do not match"
         end
