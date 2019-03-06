@@ -3,8 +3,7 @@ require_relative 'base_view'
 class OrdersView < BaseView
   def orders_display(array)
     array.each_with_index do |row, index|
-      p row
-      puts "#{row.id} #{row.customer} #{row.meal}"
+      puts "#{row[:id]} #{row[:customer].name} #{row[:employee].name} #{row[:delivered]}"
     end
   end
 end

@@ -24,7 +24,6 @@ class BaseRepository
     found = nil
     @elements.each do |element|
       if element.id == id
-        puts element.class
         found = element
       end
     end
