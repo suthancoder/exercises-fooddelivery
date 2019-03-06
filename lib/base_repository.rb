@@ -20,6 +20,16 @@ class BaseRepository
     @next_id += 1
   end
 
+  def find(id)
+    found = nil
+    @elements.each do |element|
+      if element.id == id
+        found = element
+      end
+    end
+    return found
+  end
+
   def destroy
 
   end

@@ -24,7 +24,7 @@ employees_repository = EmployeesRepository.new(employees_file)
 employees_controller = EmployeesController.new(employees_repository)
 
 orders_repository = OrdersRepository.new(orders_file)
-orders_controller = OrdersController.new(orders_repository, customers_repository)
+orders_controller = OrdersController.new(orders_repository, customers_repository, meals_repository, employees_repository)
 
 router = Router.new(meals_controller, customers_controller, employees_controller, orders_controller)
 

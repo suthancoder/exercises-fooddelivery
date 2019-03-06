@@ -121,7 +121,7 @@ class Router
           when 1
             @orders_controller.list
           when 2
-            puts "Calls Orders Controller Add"
+            @orders_controller.add
           else
             puts "no choices"
         end
